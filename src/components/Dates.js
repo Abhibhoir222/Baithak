@@ -8,7 +8,7 @@ export default function Dates({ invoiceNumber, invoiceDate, dueDate }) {
               <span className="font-bold">invoce number:</span>
               {invoiceNumber}
             </li>
-            <li className=" p-1 bg-gray-100" >
+            <li className=" p-1 bg-gray-100">
               <span className="font-bold">Invoice Date:</span>
               {invoiceDate}
             </li>

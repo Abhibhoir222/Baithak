@@ -1,4 +1,4 @@
-export default function Notes({note}) {
+export default function Notes({ note }) {
   return (
     <>
       <section className="mb-5">

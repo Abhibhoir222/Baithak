@@ -1,4 +1,4 @@
-export default function MainDetails({name,address,}) {
+export default function MainDetails({ name, address }) {
   return (
     <>
       <section className="flex flex-col  items-end justify-end">

@@ -1,4 +1,3 @@
-import { setSelectionRange } from "@testing-library/user-event/dist/utils";
 import { useState } from "react";
 import ClientDetails from "./components/ClientDetails";
 import Dates from "./components/Dates";
@@ -194,8 +193,8 @@ function App() {
               <button
                 onClick={() => SetShowInvoice(true)}
                 className="bg-blue-300 py-2 px-8 rounded text-white font-bold shadow border-2 border-blue-500 hover:bg-transparent 
-            hover: text-blue-500 
-            transition-all duration-300"
+                hover: text-blue-500 
+                transition-all duration-300"
               >
                 Perive Inovice
               </button>
