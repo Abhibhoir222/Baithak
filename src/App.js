@@ -130,7 +130,7 @@ function App() {
                 onChange={(e) => setBankAccount(e.target.value)}
               />
 
-              <label htmlFor="clientName">Enter Your clientName</label>
+              <label htmlFor="clientName">Enter Your client Name</label>
               <input
                 text="text"
                 name="clientName"
