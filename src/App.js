@@ -1,84 +1,207 @@
+import { setSelectionRange } from "@testing-library/user-event/dist/utils";
+import { useState } from "react";
+import ClientDetails from "./components/ClientDetails";
+import Dates from "./components/Dates";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import MainDetails from "./components/MainDetails";
+import Notes from "./components/Notes";
+import Table from "./components/Table";
+
 function App() {
+  const [showInvoice, SetShowInvoice] = useState(false);
+  const [name, setName] = useState("");
+  const [address, setAddresse] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [bankName, setBankName] = useState("");
+  const [bankAccount, setBankAccount] = useState("");
+  const [website, setWebSite] = useState("");
+  const [clientName, setClientName] = useState("");
+  const [clientAddress, setClientAddress] = useState("");
+  const [invoiceNumber, setInvoiceNumber] = useState("");
+  const [invoiceDate, setInvoiceDate] = useState("");
+  const [dueDate, setDueDate] = useState("");
+  const [note, setNote] = useState("");
+
   const handlePrint = () => {
     window.print();
   };
   return (
     <>
-      <main className="m-5 p-5 lx:max-w-4xl xl:mx-auto bg-white rounded shadow "> 
-        {/* Header */}
-        <header className="flex flex-col items-center justify-center md-5 xl:flex-row xl:justify-between ">
+      <main className="m-5 p-5 lg:max-w-4xl xl:mx-auto bg-white rounded shadow ">
+        {showInvoice ? (
           <div>
-            <h1 className="font-bold uppercase-wide text-4xl md-3 " >invoice</h1>
+            <Header handlePrint={handlePrint} />
+            <MainDetails name={name} address={address} email={email} />
+            <ClientDetails clientName={clientName}  clientAddress={clientAddress}  />
+            <Dates invoiceNumber={invoiceNumber} invoiceDate={invoiceDate} dueDate={dueDate} />
+            <Table />
+            <Notes note={note} />
+            <Footer
+              name={name}
+              address={address}
+              website={website}
+              email={email}
+              phone={phone}
+              bankAccount={bankAccount}
+              bankName={bankName}
+            />
+            <button
+              onClick={() => SetShowInvoice(false)}
+              className=" mt-5 bg-blue-300 py-2 px-8 rounded text-white font-bold shadow border-2 border-blue-500 hover:bg-transparent 
+            hover: text-blue-500 
+            transition-all duration-300"
+            >
+              Edit information
+            </button>
           </div>
-          <div>
-            <ul className="flex items-center justify-between flex-wrap">
-              <li>
-                <button onClick={handlePrint} className="btn btn-print">
-                  Print
-                </button>
-              </li>
-              <li>
-                <button className="btn btn-download">Download</button>
-              </li>
-              <li>
-                <button className="btn btn-send">Send</button>
-              </li>
-            </ul>
-          </div>
-        </header>
-        {/* End header */}
+        ) : (
+          <>
+            {/* name, address,email,phone,bank name,bank name,  client name, client address,invoice number,invoice date,dude date,notes */}
+            <div className="flex flex-col justify-center">
+              <label htmlFor="name">Enter Your Name</label>
+              <input
+                text="text"
+                name="text"
+                id="name"
+                placeholder="Enter you name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
 
-        {/* your details */}
-        <section className="flex flex-col  items-end justify-end">
-          <h2 className=" text-xl uppercase" >Abhishek Bhoir</h2>
-          <p> Your Address</p>
-        </section>
-        {/* your details End */}
+              <label htmlFor="address">Enter Your Address</label>
+              <input
+                text="text"
+                name="address"
+                id="address"
+                placeholder="Enter you address"
+                value={address}
+                onChange={(e) => setAddresse(e.target.value)}
+              />
 
-        {/* clinet details */}
-        <section className="mt-5" >
-          <h2 className=" text-xl uppercase">Client's Name</h2>
-          <p>Client's Address</p>
-        </section>
-        {/* end cliendt details */}
+              <label htmlFor="email">Enter Your Email</label>
+              <input
+                text="text"
+                name="email"
+                id="email"
+                placeholder="Enter you email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
 
-        {/* Dates */}
-        <section>
-          <article className="my-5 flex items-end justify-end" >
-            <ul>
-              <li><span className="font-bold" >invoce number</span> </li>
-              <li><span className="font-bold">Invoice Date</span></li>
-              <li><span className="font-bold">Due Date's</span></li>
-            </ul>
-          </article>
-          {/* end of dates */}
-        </section>
+              <label htmlFor="website">Enter Your Website</label>
+              <input
+                text="url"
+                name="website"
+                id="website"
+                placeholder="Enter you Website"
+                value={website}
+                onChange={(e) => setWebSite(e.target.value)}
+              />
 
-        {/* Table */}
-          <div className="my-5" > This is the tabel</div>
-        {/* End of Table */}
+              <label htmlFor="phone">Enter Your Phone Number</label>
+              <input
+                text="text"
+                name="phone"
+                id="phone"
+                placeholder="Enter you Website"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+              />
 
-        {/*Notes  */}
-        <section className="mb-5" >
-          {/* text Area */}
-          <p> Notes to the clinet....</p>
-        </section>
-        {/* End of Notes */}
+              <label htmlFor="bankName">Enter Your Bank Name</label>
+              <input
+                text="text"
+                name="bankName"
+                id="bankName"
+                placeholder="Enter you Bank Name"
+                value={bankName}
+                onChange={(e) => setBankName(e.target.value)}
+              />
 
-        {/* Footer */}
+              <label htmlFor="bankAccount">Enter Your Bank Account</label>
+              <input
+                text="text"
+                name="bankAccount"
+                id="bankAccount"
+                placeholder="Enter you Bank Account"
+                value={bankAccount}
+                onChange={(e) => setBankAccount(e.target.value)}
+              />
 
-        <footer>
-          <ul className="flex flex-wrap itmes-center justify-center" >
-            <li><span className="font-bold" >Your Name:</span> Abhishek Bhoir </li>
-            <li><span className="font-bold">Your Email address:</span> abhi@gfhjk</li>
-            <li><span className="font-bold">Phone Number:</span>874512078</li>
-            <li><span className="font-bold">Bank:</span>BHK74512 </li>
-            <li><span className="font-bold">Account Holder:</span>abhishek</li>
-            <li><span className="font-bold">Account Number:</span>7795422</li>
-            <li><span className="font-bold">WebSite:</span>qwedfghn</li>
-          </ul>
-        </footer>
-        {/* End of Footer */}
+              <label htmlFor="clientName">Enter Your clientName</label>
+              <input
+                text="text"
+                name="clientName"
+                id="clientName"
+                placeholder="Enter you client Name"
+                value={clientName}
+                onChange={(e) => setClientName(e.target.value)}
+              />
+
+              <label htmlFor="clientAddress">Enter Your client Address</label>
+              <input
+                text="text"
+                name="clientAddress"
+                id="clientAddress"
+                placeholder="Enter you client Address"
+                value={clientAddress}
+                onChange={(e) => setClientAddress(e.target.value)}
+              />
+
+              <label htmlFor="invoiceNumber">invoice Number</label>
+              <input
+                text="text"
+                name="invoiceNumber"
+                id="invoiceNumber"
+                placeholder=" Invoice Number"
+                value={invoiceNumber}
+                onChange={(e) => setInvoiceNumber(e.target.value)}
+              />
+
+              <label htmlFor="invoiceDate">invoice Date</label>
+              <input
+                text="date"
+                name="invoiceDate"
+                id="invoiceDate"
+                placeholder="Invoice Date"
+                value={invoiceDate}
+                onChange={(e) => setInvoiceDate(e.target.value)}
+              />
+
+              <label htmlFor="dueDate">Due Date</label>
+              <input
+                text="date"
+                name="dueDate"
+                id="dueDate"
+                placeholder="Due Date"
+                value={dueDate}
+                onChange={(e) => setDueDate(e.target.value)}
+              />
+
+              <label htmlFor="note">Notes</label>
+              <textarea
+                name="note"
+                id="note"
+                cols="30"
+                row="10"
+                placeholder="Addition notes for clients"
+                value={note}
+                onChange={(e) => setNote(e.target.value)}
+              ></textarea>
+
+              <button
+                onClick={() => SetShowInvoice(true)}
+                className="bg-blue-300 py-2 px-8 rounded text-white font-bold shadow border-2 border-blue-500 hover:bg-transparent 
+            hover: text-blue-500 
+            transition-all duration-300"
+              >
+                Perive Inovice
+              </button>
+            </div>
+          </>
+        )}
       </main>
     </>
   );
