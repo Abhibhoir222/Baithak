@@ -1,7 +1,30 @@
-export default function Table() {
+import React, { useEffect } from "react";
+export default function Table({ list,discription, quantity, price, amount }) {
   return (
     <>
-      <div className="my-5"> This is the tabel</div>
+     <table width="100%" className="mb-10">
+        <thead>
+          <tr className="bg-gray-200 p-1">
+            <td className="font-bold">Description</td>
+            <td className="font-bold">Quantity</td>
+            <td className="font-bold">Price</td>
+            <td className="font-bold">Amount</td>
+          </tr>
+        </thead>
+        {list.map(({id,discription,quantity,price,amount})=>
+          <React.Fragment key={id }>
+        <tbody>
+          <tr>
+            <td>{discription}</td>
+            <td>{quantity}</td>
+            <td>{price}</td>
+            <td>{amount}</td>
+          </tr>
+        </tbody>
+          </React.Fragment>
+        )}
+        
+      </table>
     </>
   );
 }
