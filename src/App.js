@@ -50,7 +50,7 @@ function App() {
             <Table
               discription={discription}
               price={price}
-              amount={amout}
+              amout={amout}
               quantity={quantity}
               list={list}
               setList={setList}
