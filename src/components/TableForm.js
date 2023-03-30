@@ -101,14 +101,14 @@ export default function TableForm({
             <td className="font-bold">Amount</td>
           </tr>
         </thead>
-        {list.map(({id,discription,quantity,price,amount})=>
+        {list.map(({id,discription,quantity,price,amout})=>
           <React.Fragment key={id }>
         <tbody>
           <tr>
             <td>{discription}</td>
             <td>{quantity}</td>
             <td>{price}</td>
-            <td>{amount}</td>
+            <td>{amout}</td>
           </tr>
         </tbody>
           </React.Fragment>
